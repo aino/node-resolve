@@ -41,6 +41,21 @@ test('baz', function (t) {
     t.end();
 });
 
+test('bazbower', function (t) {
+    var dir = __dirname + '/resolver';
+
+    t.equal(
+        resolve.sync('./bazbower', { basedir : dir, manifest: 'bower.json' }),
+        dir + '/bazbower/quux.js'
+    );
+
+    t.equal(
+        resolve.sync('./bazbower', { basedir : dir }),
+        dir + '/bazbower/doom.js'
+    );
+    t.end();
+});
+
 test('biz', function (t) {
     var dir = __dirname + '/resolver/biz/node_modules';
     t.equal(

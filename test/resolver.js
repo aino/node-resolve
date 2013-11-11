@@ -74,6 +74,24 @@ test('baz', function (t) {
     });
 });
 
+test('bazbower', function (t) {
+    t.plan(4);
+    var dir = __dirname + '/resolver';
+    
+    resolve('./bazbower', { basedir : dir, manifest: 'bower.json' }, function (err, res, pkg) {
+        if (err) t.fail(err);
+        t.equal(res, dir + '/bazbower/quux.js');
+        t.equal(pkg.main, 'quux.js');
+    });
+
+    resolve('./bazbower', { basedir : dir }, function (err, res, pkg) {
+        if (err) t.fail(err);
+        t.equal(res, dir + '/bazbower/doom.js');
+        t.equal(pkg.main, 'doom.js');
+    });
+
+});
+
 test('biz', function (t) {
     t.plan(24);
     var dir = __dirname + '/resolver/biz/node_modules';
