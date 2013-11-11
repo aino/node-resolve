@@ -68,6 +68,9 @@ node_modules recursive walk (probably don't use this)
 * opts.moduleDirectory - directory to recursively look for modules in. default:
 `"node_modules"`
 
+* opts.manifest - Module manifest file to parse, for example `bower.json`.
+  default: `package.json`
+
 default `opts` values:
 
 ``` javascript
@@ -83,7 +86,8 @@ default `opts` values:
             else cb(null, stat.isFile())
         });
     },
-    moduleDirectory: 'node_modules'
+    moduleDirectory: 'node_modules',
+    manifest: 'package.json'
 }
 ```
 
@@ -111,6 +115,9 @@ node_modules recursive walk (probably don't use this)
 * opts.moduleDirectory - directory to recursively look for modules in. default:
 `"node_modules"`
 
+* opts.manifest - Module manifest file to parse, for example `bower.json`.
+  default: `package.json`
+
 default `opts` values:
 
 ``` javascript
@@ -123,7 +130,8 @@ default `opts` values:
         try { return fs.statSync(file).isFile() }
         catch (e) { return false }
     },
-    moduleDirectory: 'node_modules'
+    moduleDirectory: 'node_modules',
+    manifest: 'package.json'
 }
 ````
 
